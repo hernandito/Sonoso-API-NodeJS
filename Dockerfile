@@ -32,6 +32,6 @@ HEALTHCHECK --interval=3m --timeout=2s \
   CMD curl -LSs http://localhost:5005 || exit 1
 
 #CMD npm start
-screen -dm -S mySonosAPI /app/start.sh
+CMD screen -dm -S mySonosAPI /app/start.sh
 
 
