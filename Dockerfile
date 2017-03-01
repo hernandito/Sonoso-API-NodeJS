@@ -3,13 +3,13 @@ FROM node:6-alpine
 WORKDIR /app
 
 RUN apk update && \
-  apk --no-cache add tar curl mc git nano screen && \
-  curl -L https://github.com/jishi/node-sonos-http-api/archive/master.tar.gz | tar xz --strip-components=1 -C /app && \
-  mkdir cache && \
+  apk --no-cache add tar curl mc git nano screen
+#  curl -L https://github.com/jishi/node-sonos-http-api/archive/master.tar.gz | tar xz --strip-components=1 -C /app && \
+#  mkdir cache && \
 #  ln -s settings/settings.json && \
- # chown -R node:node static cache && \
-  npm install --production && \
-  rm -rf /tmp/* /root/.npm
+#  chown -R node:node static cache && \
+#  npm install --production && \
+#  rm -rf /tmp/* /root/.npm
 
 #RUN mkdir -p /app/static && \
 #mkdir -p /app/static/clips && \
