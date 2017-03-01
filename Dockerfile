@@ -17,19 +17,19 @@ mkdir -p /app/static/clips && \
 mkdir -p /app/presets && \
 mkdir -p /app/settings
 
-ADD settings.json /app/settings/settings.json
-ADD presets.json /app/presets/presets.json
-ADD start.sh /app/start.sh 
+#ADD settings.json /app/settings/settings.json
+#ADD presets.json /app/presets/presets.json
+#ADD start.sh /app/start.sh 
 
-RUN chmod -v +x /app/start.sh
+#RUN chmod -v +x /app/start.sh
  
 EXPOSE 5005
 VOLUME /app 
 
 #USER node
 
-HEALTHCHECK --interval=3m --timeout=2s \
-  CMD curl -LSs http://localhost:5005 || exit 1
+#HEALTHCHECK --interval=3m --timeout=2s \
+#  CMD curl -LSs http://localhost:5005 || exit 1
 
 #CMD npm start
 #CMD screen -dm -S mySonosAPI /app/start.sh
