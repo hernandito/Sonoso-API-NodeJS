@@ -6,16 +6,17 @@ RUN apk update && \
   apk --no-cache add tar curl mc git nano screen && \
   curl -L https://github.com/jishi/node-sonos-http-api/archive/master.tar.gz | tar xz --strip-components=1 -C /app && \
   mkdir cache && \
-#  ln -s settings/settings.json && \
-#  chown -R node:node static cache && \
+  ln -s settings/settings.json && \
+  chown -R node:node static cache && \
   npm install --production && \
   rm -rf /tmp/* /root/.npm
 
-RUN mkdir -p /app/cache && \
-mkdir -p /app/static && \
+RUN mkdir -p /app/static && \
 mkdir -p /app/static/clips && \
 mkdir -p /app/presets && \
 mkdir -p /app/settings
+
+RUN chmod -R 777 /app/
 
 #ADD settings.json /app/settings/settings.json
 #ADD presets.json /app/presets/presets.json
@@ -26,7 +27,9 @@ mkdir -p /app/settings
 EXPOSE 5005
 VOLUME /app 
 
-#USER node
+USER node
+
+RUN chmod -R 777 /app/
 
 #HEALTHCHECK --interval=3m --timeout=2s \
 #  CMD curl -LSs http://localhost:5005 || exit 1
