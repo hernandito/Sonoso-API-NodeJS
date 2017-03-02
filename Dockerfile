@@ -7,48 +7,7 @@ LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DA
 
 # install build packages
 
-RUN apk update
 
-RUN apk add --no-cache --virtual=build-dependencies \
-	curl \
-	wget \
-	mc \	
-	tar \	
-	screen \		
-	zip \	
-	python-dev \	
-	tar
-
-# install runtime packages
-RUN apk add --no-cache \
-	nodejs \
-	openssl \
-	python
-
-# install kodi kontrol
-RUN mkdir -p \
-	/app
-
-
-
-RUN npm install && \
- 
- npm install \
-	async \
-	jsonrpc && \
-
- npm install --production && \
-	
-curl -L https://github.com/jishi/node-sonos-http-api/archive/master.tar.gz | tar xz --strip-components=1 -C /app && \
-mkdir cache && \
-
-
-# cleanup
- apk del --purge \
-	build-dependencies && \
- npm cache clean && \
- rm -rf \
-	/tmp
 
 # copy local files
 COPY root/ /
@@ -56,7 +15,4 @@ COPY root/ /
 # ports and volumes
 EXPOSE 5005
 VOLUME /app
-
-
-
 
