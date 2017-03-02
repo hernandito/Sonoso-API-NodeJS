@@ -9,15 +9,13 @@ LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DA
 
 RUN apk update
 
-RUN \
- apk add --no-cache --virtual=build-dependencies \
+RUN apk add --no-cache --virtual=build-dependencies \
 	curl \
 	wget \
 	mc \	
 	tar \	
 	screen \		
 	zip \	
-	python-setuptools \		
 	python-dev \	
 	tar
 
