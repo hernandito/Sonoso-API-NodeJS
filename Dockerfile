@@ -1,4 +1,6 @@
-FROM node:6-alpine
+FROM mhart/alpine-node:latest
+
+WORKDIR /src
 
 # set version label
 ARG BUILD_DATE
@@ -14,5 +16,5 @@ COPY root/ /
 
 # ports and volumes
 EXPOSE 5005
-VOLUME /app
+VOLUME /src
 
