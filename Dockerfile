@@ -36,9 +36,11 @@ RUN npm install && \
  npm install \
 	async \
 	jsonrpc && \
+
+ npm install --production && \
 	
-	cd / && \
-	npm install https://github.com/jishi/node-sonos-http-api && \
+curl -L https://github.com/jishi/node-sonos-http-api/archive/master.tar.gz | tar xz --strip-components=1 -C /app && \
+mkdir cache && \
 
 
 # cleanup
