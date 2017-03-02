@@ -6,6 +6,9 @@ ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
 # install build packages
+
+RUN apk update
+
 RUN \
  apk add --no-cache --virtual=build-dependencies \
 	curl \
@@ -16,21 +19,21 @@ RUN \
 	zip \	
 	python-setuptools \		
 	python-dev \	
-	tar && \
+	tar
 
 # install runtime packages
- apk add --no-cache \
+RUN apk add --no-cache \
 	nodejs \
 	openssl \
-	python && \
+	python
 
 # install kodi kontrol
- mkdir -p \
-	/app && \
+RUN mkdir -p \
+	/app
 
 
 
- npm install && \
+RUN npm install && \
  
  npm install \
 	async \
